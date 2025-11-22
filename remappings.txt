@@ -1,0 +1,7 @@
+git@openzeppelin/=dependencies/openzeppelin-contracts/
+forge-std/=dependencies/forge-std/src/
+ds-test/=dependencies/forge-std/lib/ds-test/src/
+"@chainlink/contracts/=lib/chainlink/contracts/"
+@hyperlane-xyz/=lib/hyperlane-monorepo/solidity/contracts/
+@openzeppelin/contracts/=dependencies/openzeppelin-contracts/contracts/
+@openzeppelin/contracts-upgradeable/=dependencies/openzeppelin-contracts-upgradeable/contracts/
