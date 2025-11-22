@@ -10,7 +10,10 @@ contract TrustedRelayerIsmScript is Script {
     function setUp() public {}
 
     function run() public {
-        
+        vm.startBroadcast();
+
+        address mailBox = 0x8df6307f003Cd31c12560332b6eb1EE0278d9329;
+        address relayer = 0x0aEDc81C6946f8867dD5a5437A1346a35CdC3928;
 
         trustedRelayerIsm = new TrustedRelayerIsm(mailBox, relayer);
 
