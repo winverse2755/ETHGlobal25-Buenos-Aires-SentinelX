@@ -141,7 +141,27 @@ contract CrossChainFreezer is IMessageRecipient {
 
     // ============ DESTINATION: handle incoming freeze ============
 
-    
+    function handle(
+        uint32 _origin,
+        bytes32 _sender,
+        bytes calldata _body
+    ) external payable override onlyMailbox {
+        // Check this came from the freezer we configured for that origin domain
+        bytes32 expectedSender = remoteFreezerForDomain[_origin];
+        require(expectedSender != bytes32(0), "unknown origin");
+        require(_sender == expectedSender, "untrusted sender");
+
+        // Check action – keep it dumb for now
+        require(
+            keccak256(_body) == keccak256(bytes("FREEZE")),
+            "invalid action"
+        );
+
+        // Pause token on this chain
+        token.pause();
+
+        emit RemoteFreezeHandled(_origin, _sender);
+    }
 
     // ============ Helper ============
 
